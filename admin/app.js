@@ -11,7 +11,11 @@ var authRouter = require('./routes/auth');
 
 const requireAuth = require('./middlewares/requireAuth');
 
+var apiRouter = require('./routes/api');
+
+
 var app = express();
+app.use(cors());
 
 // usando o cookie-session
 app.use(cookieSession({
@@ -30,6 +34,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/api', apiRouter);
 
 app.use('/auth', authRouter);
 

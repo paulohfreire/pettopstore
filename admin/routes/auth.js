@@ -12,18 +12,18 @@ router.get('/login_form', async (req, res) => {
   res.render('auth/login_form', { error: req.query.error });
 });
 
-// tenta logar o client e redirecionar para a raiz do sistema
+// tenta logar o employee e redirecionar para a raiz do sistema
 router.post('/sign_in', async (req, res) => {
-  // busca client no banco com esse email
-  const client = await knex.table('clients').where({ email: req.body.email }).first();
-  if (!client) {
+  // busca employee no banco com esse email
+  const employee = await knex.table('employees').where({ email: req.body.email, is_admin: true }).first();
+  if (!employee) {
     return res.redirect('/auth/login_form?error=1');
   }
   // compara a senha passada pelo formulário com a senha critografa no banco de dados
-  if ( bcrypt.compareSync(req.body.password, client.password) ) {
-    // se senha é correta, guarda o ID do client na sessão
+  if ( bcrypt.compareSync(req.body.password, employee.password) ) {
+    // se senha é correta, guarda o ID do employee na sessão
     // permitindo que seja utilizado em outras rotas
-    req.session.logged_as = client.id;
+    req.session.logged_as = employee.id;
     // redireciona usuário para a raiz do sistema
     return res.redirect('/');
   } else {
@@ -35,7 +35,7 @@ router.post('/sign_in', async (req, res) => {
   }
 });
 
-// desloga o client e redireciona para o form de login
+// desloga o employee e redireciona para o form de login
 router.get('/sign_out', async (req, res) => {
   req.session = null;
   return res.redirect('/auth/login_form');

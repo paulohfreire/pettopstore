@@ -1,0 +1,14 @@
+<h1>Criar produto</h1>
+<form method="POST" action="/products/create" enctype="multipart/form-data">
+  Foto: <input type="file" name="photo" /><br/>
+  Nome: <input type="text" name="name" /><br/>
+  Preço: <input type="text" name="price" /><br/>
+  Descrição: <input type="text" name="description" /><br/>
+  Categoria:
+  <select name="category_id">
+    <% for (const category of categories) { %>
+      <option value="<%= category.id %>"><%= category.name %></option>
+    <% } %>
+  </select><br/>
+  <input type="submit" value="Salvar produto" />
+</form>

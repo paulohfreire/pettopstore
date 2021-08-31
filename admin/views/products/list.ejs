@@ -1,0 +1,17 @@
+<h1>Lista de produtos</h1>
+
+<a href="/">Voltar</a>
+
+<a href="/products/new">Adicionar produto</a>
+
+<table>
+  <% for (const product of products) { %>
+    <tr>
+      <td><img src="/images/<%= product.photo %>" width="100px" /></td>
+      <td><%= product.name %></td>
+      <td><%= product.price %></td>
+      <td><%= product.category?.name %></td>
+    </tr>
+  <% } %>
+
+</table>
