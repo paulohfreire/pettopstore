@@ -14,11 +14,15 @@ router.get('/login_form', async (req, res) => {
 
 // tenta logar o employee e redirecionar para a raiz do sistema
 router.post('/sign_in', async (req, res) => {
+
   // busca employee no banco com esse email
   const employee = await knex.table('employees').where({ email: req.body.email, is_admin: true }).first();
+  
   if (!employee) {
+    
     return res.redirect('/auth/login_form?error=1');
   }
+
   // compara a senha passada pelo formulário com a senha critografa no banco de dados
   if ( bcrypt.compareSync(req.body.password, employee.password) ) {
     // se senha é correta, guarda o ID do employee na sessão

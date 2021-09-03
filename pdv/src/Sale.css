@@ -1,0 +1,40 @@
+.Sale
+{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
+  color: cadetblue;
+}
+
+.UserBox {
+  display: flex;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoutButton {
+  padding: 5px;
+  color: red;
+  border-color: red;
+}
+
+input, select, option, button {
+  color: cadetblue;
+  background-color: white;
+  border: 1px solid cornflowerblue;
+  padding: 5px;
+  font-size: 1em
+}
+
+input.success, select.success, option.success, button.success {
+  color: white;
+  background-color: teal;
+  border: 1px solid cornflowerblue;
+  padding: 5px;
+  font-size: 1em
+}

@@ -11,5 +11,3 @@ exports.up = function(knex) {
 exports.down = function(knex) {
     return knex.schema.dropTable('clients');
 };
-
-//enviar apenas esse código para atividade
