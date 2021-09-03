@@ -132,14 +132,14 @@ function Sale(props) {
 
         os options são mapeados a partir da lista de clietnes disponíveis carregada da API (clients)
         */}
-        {/* <select value={selectedClientID} onChange={(e) => {
+        <select value={selectedClientID} onChange={(e) => {
             setSelectedClientID(e.target.value);
           }}>
           <option value=""> Escolha um cliente</option>
           {clients.map((client) => 
             <option key={client.id} value={client.id}>{client.name}</option>
           )}
-        </select> */}
+        </select>
 
         {/* Se clicar em "Cadastraor novo cliente" é setada addCliente para true, o que faz o componente correspondente aparecer */}
         <button
